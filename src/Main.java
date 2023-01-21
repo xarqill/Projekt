@@ -6,10 +6,15 @@ public class Main {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 1);
 
-        fight(character, monster);
-        winFight(character, monster);
-        healthPointsRegeneration(character);
-        character.checkLevelUp();
+        for (int walki = 1; walki <= 3; walki++) {
+            fight(character, monster);
+            winFight(character, monster);
+            healthPointsRegeneration(character);
+            healthPointsRegenation(monster);
+            character.checkLevelUp();
+        }
+        printBasicInformation(character);
+        character.getRequiredExperience();
 
 
     }
@@ -103,9 +108,9 @@ public class Main {
         System.out.println("Toczysz walkę z przeciwnikiem: " + monster.getName());
         System.out.println();
 
+        int fightRound = 0;
         while (character.getHealthPoints() > 0 || monster.getHealthPoints() > 0) {
-            int i = 0;
-            i++;
+            fightRound++;
 
             if (character.getHealthPoints() <= 0) {
                 System.out.println();
@@ -115,7 +120,7 @@ public class Main {
             }
 
             monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
-            System.out.println("[" + i + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
+            System.out.println("[" + fightRound + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
 
             if (monster.getHealthPoints() <= 0) {
                 System.out.println();
@@ -126,7 +131,7 @@ public class Main {
             }
 
             character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
-            System.out.println("[" + i + "] " + "Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
+            System.out.println("[" + fightRound + "] " + "Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
         }
     }
 
@@ -135,6 +140,7 @@ public class Main {
         if (character.getHealthPoints() > 0) {
             System.out.println("Zdobyłeś: " + monster.getExperience() + " doświadczenia i " + monster.getGold() + " złota");
             System.out.println("--------------------------------------------------------------------------");
+            System.out.println();
             character.setExperience(character.getExperience() + monster.getExperience());
             character.setGold(character.getGold() + monster.getGold());
         }
@@ -142,6 +148,10 @@ public class Main {
 
     private static void healthPointsRegeneration(Character character) { // Regenerowanie hp do 100% po każdej walce
         character.setHealthPoints(character.getMaxHealthPoints());
+    }
+
+    private static void healthPointsRegenation(Monster monster) {
+        monster.setHealthPoints(monster.getMaxHealthPoints());
     }
 
 

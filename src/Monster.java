@@ -6,14 +6,15 @@ public class Monster {
     private int experience;
     private int gold;
     private int healthPoints;
+    private int maxHealthPoints;
     private int damage;
 
-    public Monster(String name, int level, int experience, int gold, int healthPoints, int damage) {
+    public Monster(String name, int level, int experience, int gold, int maxHealthPoints, int damage) {
         this.name = name;
         this.level = level;
         this.experience = experience;
         this.gold = gold;
-        this.healthPoints = healthPoints;
+        this.healthPoints = maxHealthPoints;
         this.damage = damage;
     }
 
@@ -49,6 +50,14 @@ public class Monster {
         this.healthPoints = healthPoints;
     }
 
+    public int getMaxHealthPoints() {
+        return maxHealthPoints;
+    }
+
+    public void setMaxHealthPoints(int maxHealthPoints) {
+        this.maxHealthPoints = maxHealthPoints;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -66,6 +75,7 @@ public class Monster {
                 ", experience=" + experience +
                 ", gold=" + gold +
                 ", healthPoints=" + healthPoints +
+                ", maxHealthPoints=" + maxHealthPoints +
                 ", damage=" + damage +
                 '}';
     }
@@ -79,12 +89,13 @@ public class Monster {
                 && experience == monster.experience
                 && gold == monster.gold
                 && healthPoints == monster.healthPoints
+                && maxHealthPoints == monster.maxHealthPoints
                 && damage == monster.damage
-                && Objects.equals(name, monster.name);
+                && name.equals(monster.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, level, experience, gold, healthPoints, damage);
+        return Objects.hash(name, level, experience, gold, healthPoints, maxHealthPoints, damage);
     }
 }
