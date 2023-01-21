@@ -98,9 +98,11 @@ public class Main {
         System.out.println("Toczysz walkę z przeciwnikiem: " + monster.getName());
         System.out.println();
 
+        boolean fightResult;
         while (character.getHealthPoints() > 0 || monster.getHealthPoints() > 0) {
             if (character.getHealthPoints() <= 0) {
                 System.out.println("Przegrałeś walkę z przeciwnikiem: " + monster.getName());
+                fightResult = false;
             }
 
             monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
@@ -108,6 +110,7 @@ public class Main {
 
             if (monster.getHealthPoints() <= 0) {
                 System.out.println("Wygrałeś walkę z przeciwnikiem: " + monster.getName());
+                fightResult = true;
             }
 
             character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
