@@ -9,6 +9,7 @@ public class Character {
     private int requiredExperience = 10;
     private int gold = 0;
     private int healthPoints = 15;
+    private int maxHealthPoints = 15;
     private int damage = 1;
 
     public Character(String userName, String profession) {
@@ -26,6 +27,7 @@ public class Character {
             setExperience(getExperience() - requiredExperience);
             setLevel(getLevel() + 1);
             requiredExperience = (requiredExperience * 5) / 4;
+            setMaxHealthPoints(getMaxHealthPoints() + 5);
         }
     }
 
@@ -81,6 +83,14 @@ public class Character {
         this.healthPoints = healthPoints;
     }
 
+    public int getMaxHealthPoints() {
+        return maxHealthPoints;
+    }
+
+    public void setMaxHealthPoints(int maxHealthPoints) {
+        this.maxHealthPoints = maxHealthPoints;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -101,6 +111,7 @@ public class Character {
                 ", requiredExperience=" + requiredExperience +
                 ", gold=" + gold +
                 ", healthPoints=" + healthPoints +
+                ", maxHealthPoints=" + maxHealthPoints +
                 ", damage=" + damage +
                 '}';
     }
@@ -115,6 +126,7 @@ public class Character {
                 && requiredExperience == character.requiredExperience
                 && gold == character.gold
                 && healthPoints == character.healthPoints
+                && maxHealthPoints == character.maxHealthPoints
                 && damage == character.damage
                 && Objects.equals(userName, character.userName)
                 && Objects.equals(profession, character.profession);
@@ -122,6 +134,6 @@ public class Character {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName, profession, maxLevel, level, experience, requiredExperience, gold, healthPoints, damage);
+        return Objects.hash(userName, profession, maxLevel, level, experience, requiredExperience, gold, healthPoints, maxHealthPoints, damage);
     }
 }

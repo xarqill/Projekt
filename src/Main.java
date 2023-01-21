@@ -103,6 +103,7 @@ public class Main {
             if (character.getHealthPoints() <= 0) {
                 System.out.println("Przegrałeś walkę z przeciwnikiem: " + monster.getName());
                 fightResult = false;
+                return;
             }
 
             monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
@@ -111,10 +112,26 @@ public class Main {
             if (monster.getHealthPoints() <= 0) {
                 System.out.println("Wygrałeś walkę z przeciwnikiem: " + monster.getName());
                 fightResult = true;
+                return;
             }
 
             character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
             System.out.println("Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
         }
     }
+
+    // Przydzielenie nagród po wygranej walce
+    private static void winFight(Character character, Monster monster) {
+        if (character.getHealthPoints() > 0) {
+            System.out.println("Zdobyłeś: " + monster.getExperience() + " doświadczenia i " + monster.getGold() + " złota");
+            character.setExperience(character.getExperience() + monster.getExperience());
+            character.setGold(character.getGold() + monster.getGold());
+        }
+    }
+
+    private static void healthPointsRegeneration(Character character) { // Regenerowanie hp do 100% po każdej walce
+        character.setHealthPoints(character.getMaxHealthPoints());
+    }
+
+
 }
