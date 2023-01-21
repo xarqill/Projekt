@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Character {
     private final String userName;
     private final String profession;
@@ -27,8 +29,8 @@ public class Character {
         }
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
     public String getProfession() {
@@ -85,5 +87,41 @@ public class Character {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "userName='" + userName + '\'' +
+                ", profession='" + profession + '\'' +
+                ", maxLevel=" + maxLevel +
+                ", level=" + level +
+                ", experience=" + experience +
+                ", requiredExperience=" + requiredExperience +
+                ", gold=" + gold +
+                ", healthPoints=" + healthPoints +
+                ", damage=" + damage +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Character character = (Character) o;
+        return level == character.level
+                && experience == character.experience
+                && requiredExperience == character.requiredExperience
+                && gold == character.gold
+                && healthPoints == character.healthPoints
+                && damage == character.damage
+                && Objects.equals(userName, character.userName)
+                && Objects.equals(profession, character.profession);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, profession, maxLevel, level, experience, requiredExperience, gold, healthPoints, damage);
     }
 }
