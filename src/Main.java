@@ -6,7 +6,7 @@ public class Main {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
 
-        for (int walki = 1; walki <= 3; walki++) {
+        for (int walki = 1; walki <= 1000000; walki++) {
             fight(character, monster);
             winFight(character, monster);
             healthPointsRegeneration(character);
