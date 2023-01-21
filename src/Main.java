@@ -4,7 +4,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         Character character = new Character(createUserName(), createProfession());
-        Monster monster = new Monster("Pies", 1, 2, 1, 5, 1);
+        Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
 
         for (int walki = 1; walki <= 3; walki++) {
             fight(character, monster);
@@ -14,7 +14,7 @@ public class Main {
             character.checkLevelUp();
         }
         printBasicInformation(character);
-        character.getRequiredExperience();
+        System.out.println(character.getRequiredExperience());
 
 
     }

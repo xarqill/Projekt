@@ -5,16 +5,17 @@ public class Monster {
     private final int level;
     private int experience;
     private int gold;
-    private int healthPoints;
     private int maxHealthPoints;
+    private int healthPoints;
     private int damage;
 
-    public Monster(String name, int level, int experience, int gold, int maxHealthPoints, int damage) {
+    public Monster(String name, int level, int experience, int gold, int maxHealthPoints, int healthPoints, int damage) {
         this.name = name;
         this.level = level;
         this.experience = experience;
         this.gold = gold;
-        this.healthPoints = maxHealthPoints;
+        this.maxHealthPoints = maxHealthPoints;
+        this.healthPoints = healthPoints;
         this.damage = damage;
     }
 
@@ -42,20 +43,20 @@ public class Monster {
         this.gold = gold;
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
     public int getMaxHealthPoints() {
         return maxHealthPoints;
     }
 
     public void setMaxHealthPoints(int maxHealthPoints) {
         this.maxHealthPoints = maxHealthPoints;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     public int getDamage() {
