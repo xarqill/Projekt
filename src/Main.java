@@ -4,10 +4,14 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         Character character = new Character(createUserName(), createProfession());
-        getBasicInformation(character);
-
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 1);
-        getBasicInformation(monster);
+
+        fight(character, monster);
+        winFight(character, monster);
+        healthPointsRegeneration(character);
+        character.checkLevelUp();
+
+
     }
 
     // Utawianie userName przez użytkownika
@@ -69,7 +73,7 @@ public class Main {
         }
     }
 
-    private static void getBasicInformation(Character character) {
+    private static void printBasicInformation(Character character) {
         System.out.println("-----------------------------------------------------------");
         System.out.println("Nazwa użytkownika: " + character.getUserName());
         System.out.println("Profesja: " + character.getProfession());
@@ -82,7 +86,7 @@ public class Main {
         System.out.println("-----------------------------------------------------------");
     }
 
-    private static void getBasicInformation(Monster monster) {
+    private static void printBasicInformation(Monster monster) {
         System.out.println("-----------------------------------------------------------");
         System.out.println("Nazwa: " + monster.getName());
         System.out.println("Poziom: " + monster.getLevel());
@@ -95,28 +99,34 @@ public class Main {
     }
 
     private static void fight(Character character, Monster monster) {
+        System.out.println();
         System.out.println("Toczysz walkę z przeciwnikiem: " + monster.getName());
         System.out.println();
 
-        boolean fightResult;
         while (character.getHealthPoints() > 0 || monster.getHealthPoints() > 0) {
+            int i = 0;
+            i++;
+
             if (character.getHealthPoints() <= 0) {
+                System.out.println();
                 System.out.println("Przegrałeś walkę z przeciwnikiem: " + monster.getName());
-                fightResult = false;
+                System.out.println("--------------------------------------------------------------------------");
                 return;
             }
 
             monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
-            System.out.println("Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
+            System.out.println("[" + i + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
 
             if (monster.getHealthPoints() <= 0) {
+                System.out.println();
+                System.out.println("--------------------------------------------------------------------------");
                 System.out.println("Wygrałeś walkę z przeciwnikiem: " + monster.getName());
-                fightResult = true;
+                System.out.println();
                 return;
             }
 
             character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
-            System.out.println("Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
+            System.out.println("[" + i + "] " + "Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
         }
     }
 
@@ -124,6 +134,7 @@ public class Main {
     private static void winFight(Character character, Monster monster) {
         if (character.getHealthPoints() > 0) {
             System.out.println("Zdobyłeś: " + monster.getExperience() + " doświadczenia i " + monster.getGold() + " złota");
+            System.out.println("--------------------------------------------------------------------------");
             character.setExperience(character.getExperience() + monster.getExperience());
             character.setGold(character.getGold() + monster.getGold());
         }
