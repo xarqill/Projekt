@@ -4,7 +4,7 @@ public class Location {
     private final String name;
     private final int minLevel;
 
-    Location(String name, int minLevel) {
+    public Location(String name, int minLevel) {
         this.name = name;
         this.minLevel = minLevel;
     }

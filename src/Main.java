@@ -146,11 +146,11 @@ public class Main {
         }
     }
 
-    private static void healthPointsRegeneration(Character character) { // Regenerowanie hp do 100% po każdej walce
+    private static void healthPointsRegeneration(Character character) { // Regenerowanie hp do 100% naszej postaci
         character.setHealthPoints(character.getMaxHealthPoints());
     }
 
-    private static void healthPointsRegenation(Monster monster) {
+    private static void healthPointsRegenation(Monster monster) { // Regenerowanie hp do 100% potwora
         monster.setHealthPoints(monster.getMaxHealthPoints());
     }
 
