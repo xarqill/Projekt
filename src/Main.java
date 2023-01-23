@@ -98,7 +98,7 @@ public class Main {
     }
 
     // Wybieranie mapy przez użytkownika na której będzie expić
-    private static boolean mapChoice(Character character) {
+    private static void mapChoice(Character character) {
         ArrayList<Location> locations = new ArrayList<Location>();
 
         Location location1 = new Location("Zapadlisko", 1);
@@ -118,11 +118,11 @@ public class Main {
             int choice = scanner.nextInt();
 
             if (choice == 1 && location1.entryToLocation(character)) {
-                return true;
+                return;
             } else if (choice == 2 && location2.entryToLocation(character)) {
-                return true;
+                return;
             } else if (choice == 3 && location3.entryToLocation(character)) {
-                return true;
+                return;
             }
         }
     }
