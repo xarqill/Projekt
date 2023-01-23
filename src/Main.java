@@ -8,11 +8,12 @@ public class Main {
 
         Location location1 = new Location("Polana", 1);
         Location location2 = new Location("Jaskinia", 3);
+        Location location3 = new Location("Łąka", 1);
 
         Fight fight = new Fight();
 
 
-        mapChoice(character, location1, location2);
+        mapChoice(character, location1, location2, location3);
 
 
     }
@@ -105,10 +106,12 @@ public class Main {
         System.out.println("-----------------------------------------------------------");
     }
 
-    private static boolean mapChoice(Character character, Location location1, Location location2) {
+    // Wybieranie mapy przez użytkownika na której będzie expić
+    private static boolean mapChoice(Character character, Location location1, Location location2, Location location3) {
         while (true) {
             System.out.println("[1] " + location1.getName());
             System.out.println("[2] " + location2.getName());
+            System.out.println("[3] " + location3.getName());
 
             System.out.print("Wybierz mapę: ");
             int choice = scanner.nextInt();
@@ -117,7 +120,8 @@ public class Main {
                 return true;
             } else if (choice == 2 && location2.entryToLocation(character, location2)) {
                 return true;
-
+            } else if (choice == 3 && location3.entryToLocation(character, location3)) {
+                return true;
             }
         }
     }
