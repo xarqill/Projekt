@@ -117,11 +117,11 @@ public class Main {
             System.out.print("Wybierz mapę: ");
             int choice = scanner.nextInt();
 
-            if (choice == 1 && location1.entryToLocation(character, location1)) {
+            if (choice == 1 && location1.entryToLocation(character)) {
                 return true;
-            } else if (choice == 2 && location2.entryToLocation(character, location2)) {
+            } else if (choice == 2 && location2.entryToLocation(character)) {
                 return true;
-            } else if (choice == 3 && location3.entryToLocation(character, location3)) {
+            } else if (choice == 3 && location3.entryToLocation(character)) {
                 return true;
             }
         }
