@@ -1,4 +1,8 @@
+import java.util.Locale;
+import java.util.Scanner;
 public class Fight {
+    Scanner scanner = new Scanner(System.in);
+
     // Walka między postacią a potworem
     public void letsFight(Character character, Monster monster) {
         System.out.println();
@@ -18,8 +22,14 @@ public class Fight {
                 return;
             }
 
-            monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
-            System.out.println("[" + fightRound + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
+            System.out.print("[Z] Zaatakuj Przeciwnika ||  ");
+            String attack = scanner.nextLine();
+            System.out.println("--------------------------------");
+
+            if (attack.equals("z")) {
+                monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
+                System.out.println("[" + fightRound + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
+            }
 
             if (monster.getHealthPoints() <= 0) {
                 System.out.println();
@@ -35,6 +45,7 @@ public class Fight {
 
             character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
             System.out.println("[" + fightRound + "] " + "Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
+            System.out.println("--------------------------------");
         }
     }
 
