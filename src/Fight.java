@@ -27,6 +27,7 @@ public class Fight {
                 System.out.println("Wygrałeś walkę z przeciwnikiem: " + monster.getName());
                 System.out.println();
                 winFight(character, monster);
+                character.checkLevelUp();
                 healthPointsRegeneration(character);
                 healthPointsRegenation(monster);
                 return;

@@ -5,12 +5,12 @@ public class Main {
     public static void main(String[] args) {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
+        Fight fight = new Fight();
 
         for (int walki = 1; walki <= 10000; walki++) {
-
+            fight.letsFight(character, monster);
         }
         printBasicInformation(character);
-        System.out.println(character.getRequiredExperience());
 
 
     }
