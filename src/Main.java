@@ -6,12 +6,8 @@ public class Main {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
 
-        for (int walki = 1; walki <= 1000000; walki++) {
-            fight(character, monster);
-            winFight(character, monster);
-            healthPointsRegeneration(character);
-            healthPointsRegenation(monster);
-            character.checkLevelUp();
+        for (int walki = 1; walki <= 10000; walki++) {
+
         }
         printBasicInformation(character);
         System.out.println(character.getRequiredExperience());
@@ -102,57 +98,4 @@ public class Main {
         System.out.println("Obrażenia: " + monster.getDamage());
         System.out.println("-----------------------------------------------------------");
     }
-
-    private static void fight(Character character, Monster monster) {
-        System.out.println();
-        System.out.println("Toczysz walkę z przeciwnikiem: " + monster.getName());
-        System.out.println();
-
-        int fightRound = 0;
-        while (character.getHealthPoints() > 0 || monster.getHealthPoints() > 0) {
-            fightRound++;
-
-            if (character.getHealthPoints() <= 0) {
-                System.out.println();
-                System.out.println("Przegrałeś walkę z przeciwnikiem: " + monster.getName());
-                System.out.println("--------------------------------------------------------------------------");
-                return;
-            }
-
-            monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
-            System.out.println("[" + fightRound + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
-
-            if (monster.getHealthPoints() <= 0) {
-                System.out.println();
-                System.out.println("--------------------------------------------------------------------------");
-                System.out.println("Wygrałeś walkę z przeciwnikiem: " + monster.getName());
-                System.out.println();
-                return;
-            }
-
-            character.setHealthPoints(character.getHealthPoints() - monster.getDamage());
-            System.out.println("[" + fightRound + "] " + "Utraciłeś " + monster.getDamage() + "hp od ataku przeciwnika");
-        }
-    }
-
-    // Przydzielenie nagród po wygranej walce
-    private static void winFight(Character character, Monster monster) {
-        if (character.getHealthPoints() > 0) {
-            System.out.println("Zdobyłeś: " + monster.getExperience() + " doświadczenia i " + monster.getGold() + " złota");
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.println();
-            character.setExperience(character.getExperience() + monster.getExperience());
-            character.setGold(character.getGold() + monster.getGold());
-        }
-    }
-
-    private static void healthPointsRegeneration(Character character) { // Regenerowanie hp do 100% naszej postaci
-        character.setHealthPoints(character.getMaxHealthPoints());
-    }
-
-    private static void healthPointsRegenation(Monster monster) { // Regenerowanie hp do 100% potwora
-        monster.setHealthPoints(monster.getMaxHealthPoints());
-    }
-
-
 }
