@@ -5,12 +5,14 @@ public class Main {
     public static void main(String[] args) {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
+
+        Location location1 = new Location("Polana", 1);
+        Location location2 = new Location("Jaskinia", 3);
+
         Fight fight = new Fight();
 
-        for (int walki = 1; walki <= 10000; walki++) {
-            fight.letsFight(character, monster);
-        }
-        printBasicInformation(character);
+
+        mapChoice(character, location1, location2);
 
 
     }
@@ -50,20 +52,24 @@ public class Main {
                 profession = "Wojownik";
                 System.out.println("Wybrałeś profesję: " + profession);
                 System.out.println();
+                System.out.println();
                 return profession;
             } else if (chooseProfession == 2) {
                 profession = "Paladyn";
                 System.out.println("Wybrałeś profesję: " + profession);
+                System.out.println();
                 System.out.println();
                 return profession;
             } else if (chooseProfession == 3) {
                 profession = "Zwiadowca";
                 System.out.println("Wybrałeś profesję: " + profession);
                 System.out.println();
+                System.out.println();
                 return profession;
             } else if (chooseProfession == 4) {
                 profession = "Mag";
                 System.out.println("Wybrałeś profesję: " + profession);
+                System.out.println();
                 System.out.println();
                 return profession;
             } else {
@@ -97,5 +103,22 @@ public class Main {
         System.out.println("Punkty życia: " + monster.getHealthPoints());
         System.out.println("Obrażenia: " + monster.getDamage());
         System.out.println("-----------------------------------------------------------");
+    }
+
+    private static boolean mapChoice(Character character, Location location1, Location location2) {
+        while (true) {
+            System.out.println("[1] " + location1.getName());
+            System.out.println("[2] " + location2.getName());
+
+            System.out.print("Wybierz mapę: ");
+            int choice = scanner.nextInt();
+
+            if (choice == 1 && location1.entryToLocation(character, location1)) {
+                return true;
+            } else if (choice == 2 && location2.entryToLocation(character, location2)) {
+                return true;
+
+            }
+        }
     }
 }

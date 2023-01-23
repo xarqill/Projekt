@@ -9,6 +9,21 @@ public class Location {
         this.minLevel = minLevel;
     }
 
+    public boolean entryToLocation(Character character, Location location) {
+        if (character.getLevel() < location.getMinLevel()) {
+            System.out.println();
+            System.out.println("Masz za niski poziom, aby wejśc do tej lokacji!");
+            System.out.println();
+            return false;
+        }
+        else {
+            System.out.println();
+            System.out.println("Udało Ci się wejść na mapę " + getName());
+            System.out.println();
+            return true;
+        }
+    }
+
     public String getName() {
         return name;
     }
