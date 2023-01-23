@@ -1,21 +1,12 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         Character character = new Character(createUserName(), createProfession());
         Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
-
-        Location location1 = new Location("Polana", 1);
-        Location location2 = new Location("Jaskinia", 3);
-        Location location3 = new Location("Łąka", 1);
-
         Fight fight = new Fight();
 
-
-        mapChoice(character, location1, location2, location3);
-
-
+        mapChoice(character);
     }
 
     // Utawianie userName przez użytkownika
@@ -107,11 +98,21 @@ public class Main {
     }
 
     // Wybieranie mapy przez użytkownika na której będzie expić
-    private static boolean mapChoice(Character character, Location location1, Location location2, Location location3) {
+    private static boolean mapChoice(Character character) {
+        ArrayList<Location> locations = new ArrayList<Location>();
+
+        Location location1 = new Location("Zapadlisko", 1);
+        Location location2 = new Location("Polana", 5);
+        Location location3 = new Location("Jaskinia", 10);
+
+        locations.add(location1);
+        locations.add(location2);
+        locations.add(location3);
+
         while (true) {
-            System.out.println("[1] " + location1.getName());
-            System.out.println("[2] " + location2.getName());
-            System.out.println("[3] " + location3.getName());
+            for (int i = 0; i < locations.size(); i++) {
+                System.out.println("[" + (i+1) + "] " +  locations.get(i).getName());
+            }
 
             System.out.print("Wybierz mapę: ");
             int choice = scanner.nextInt();
