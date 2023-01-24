@@ -2,15 +2,7 @@ import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        //Character character = new Character(createUserName(), createProfession());
-
-//        Monster pies = new Monster("Pies", 1, 2, 1, 5, 5, 1);
-//        Monster dzikiPies = new Monster("Dziki pies", 2, 3, 1, 7, 7, 2);
-//        Monster wilk = new Monster("Wilk", 2, 3, 2, 10, 10, 2);
-//
-//        Monster wąż = new Monster("Wąż", 4, 3, 2, 10, 10, 2);
-//        Monster lama = new Monster("Lama", 2, 3, 2, 10, 10, 2);
-//        Monster goryl = new Monster("Goryl", 2, 3, 2, 10, 10, 2);
+        Character character = new Character(createUserName(), createProfession());
 
         List<Monster> monsters = new ArrayList<Monster>();
         monsters.add(new Monster("Królik", 1, 1, 1, 3, 3, 1));
@@ -26,12 +18,9 @@ public class Main {
         monsters.add(new Monster("Mysz", 9, 6, 4, 15, 15, 3));
         monsters.add(new Monster("Szczur", 10, 7, 5, 17, 17, 3));
 
-        addMonstersToLocation(monsters);
-
-       //Fight fight = new Fight();
+        chooseAction(character);
 
 
-        //mapChoice(character);
     }
 
     // Utawianie userName przez użytkownika
@@ -122,8 +111,44 @@ public class Main {
         System.out.println("-----------------------------------------------------------");
     }
 
+
+    // Wybieranie akcji przez użytkownika, co chce robić
+
+    private static void chooseAction(Character character) {
+        while (true) {
+            System.out.println("[1] Expowiska");
+            System.out.println("[2] Elity");
+            System.out.println("[3] Elity II");
+            System.out.println("[4] Herosi");
+            System.out.println("[5] Tytani");
+            System.out.println("[6] Sklep konsumpcyjny");
+            System.out.println("[7] Sklep zbrojeniowy");
+
+            System.out.print("Wybierz działanie: ");
+            int choice = scanner.nextInt();
+            System.out.println();
+
+            switch (choice) {
+                case 1:
+                    chooseMap(character);
+                    return;
+                case 2:
+                    return;
+                case 3:
+                    return;
+                case 4:
+                    return;
+                case 5:
+                    return;
+                case 6:
+                    return;
+                case 7:
+                    return;
+            }
+        }
+    }
     // Wybieranie mapy przez użytkownika na której będzie expić
-    private static void mapChoose(Character character) {
+    private static void chooseMap(Character character) {
         ArrayList<Location> locations = new ArrayList<Location>();
 
         Location location1 = new Location("Zapadlisko", 1);
@@ -136,14 +161,18 @@ public class Main {
             for (int i = 0; i < locations.size(); i++) {
                 System.out.println("[" + (i + 1) + "] " + locations.get(i).getName());
             }
+            System.out.println("[3] Cofnij");
 
             System.out.print("Wybierz mapę: ");
             int choice = scanner.nextInt();
+            System.out.println();
 
             if (choice == 1 && location1.entryToLocation(character)) {
                 return;
             } else if (choice == 2 && location2.entryToLocation(character)) {
                 return;
+            } else if (choice == 3) {
+                chooseAction(character);
             }
         }
     }
