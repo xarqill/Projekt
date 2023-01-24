@@ -24,9 +24,10 @@ public class Fight {
 
             System.out.print("[Z] Zaatakuj Przeciwnika ||  ");
             String attack = scanner.nextLine();
+            String attackToUpperCase = attack.toUpperCase();
             System.out.println("--------------------------------");
 
-            if (attack.equals("z")) {
+            if (attackToUpperCase.equals("Z")) {
                 monster.setHealthPoints(monster.getHealthPoints() - character.getDamage());
                 System.out.println("[" + fightRound + "] " + "Zadałeś przeciwnikowi " + character.getDamage() + " obrażeń");
             }

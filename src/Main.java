@@ -2,11 +2,36 @@ import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        Character character = new Character(createUserName(), createProfession());
-        Monster monster = new Monster("Pies", 1, 2, 1, 5, 5, 1);
-        Fight fight = new Fight();
+        //Character character = new Character(createUserName(), createProfession());
 
-        mapChoice(character);
+//        Monster pies = new Monster("Pies", 1, 2, 1, 5, 5, 1);
+//        Monster dzikiPies = new Monster("Dziki pies", 2, 3, 1, 7, 7, 2);
+//        Monster wilk = new Monster("Wilk", 2, 3, 2, 10, 10, 2);
+//
+//        Monster wąż = new Monster("Wąż", 4, 3, 2, 10, 10, 2);
+//        Monster lama = new Monster("Lama", 2, 3, 2, 10, 10, 2);
+//        Monster goryl = new Monster("Goryl", 2, 3, 2, 10, 10, 2);
+
+        List<Monster> monsters = new ArrayList<Monster>();
+        monsters.add(new Monster("Królik", 1, 1, 1, 3, 3, 1));
+        monsters.add(new Monster("Zając", 2, 1, 1, 3, 3, 1));
+        monsters.add(new Monster("Biedronka", 3, 2, 1, 5, 5, 1));
+        monsters.add(new Monster("Świerszcz", 4, 2, 2, 7, 7, 2));
+        monsters.add(new Monster("Żaba", 5, 3, 2, 10, 10, 2));
+
+
+        monsters.add(new Monster("Pszczoła", 6, 4, 3, 15, 15, 2));
+        monsters.add(new Monster("Dzięcioł", 7, 5, 3, 12, 12, 3));
+        monsters.add(new Monster("Wiewiórka", 8, 5, 4, 20, 20, 2));
+        monsters.add(new Monster("Mysz", 9, 6, 4, 15, 15, 3));
+        monsters.add(new Monster("Szczur", 10, 7, 5, 17, 17, 3));
+
+        addMonstersToLocation(monsters);
+
+       //Fight fight = new Fight();
+
+
+        //mapChoice(character);
     }
 
     // Utawianie userName przez użytkownika
@@ -98,20 +123,18 @@ public class Main {
     }
 
     // Wybieranie mapy przez użytkownika na której będzie expić
-    private static void mapChoice(Character character) {
+    private static void mapChoose(Character character) {
         ArrayList<Location> locations = new ArrayList<Location>();
 
         Location location1 = new Location("Zapadlisko", 1);
         Location location2 = new Location("Polana", 5);
-        Location location3 = new Location("Jaskinia", 10);
 
         locations.add(location1);
         locations.add(location2);
-        locations.add(location3);
 
         while (true) {
             for (int i = 0; i < locations.size(); i++) {
-                System.out.println("[" + (i+1) + "] " +  locations.get(i).getName());
+                System.out.println("[" + (i + 1) + "] " + locations.get(i).getName());
             }
 
             System.out.print("Wybierz mapę: ");
@@ -121,9 +144,25 @@ public class Main {
                 return;
             } else if (choice == 2 && location2.entryToLocation(character)) {
                 return;
-            } else if (choice == 3 && location3.entryToLocation(character)) {
-                return;
             }
         }
+    }
+
+    private static void addMonstersToLocation(List<Monster>monsters) {
+        List<Monster> monstersToZapadlisko = new ArrayList<Monster>();
+        monstersToZapadlisko.add(monsters.get(0));
+        monstersToZapadlisko.add(monsters.get(1));
+        monstersToZapadlisko.add(monsters.get(2));
+        monstersToZapadlisko.add(monsters.get(3));
+        monstersToZapadlisko.add(monsters.get(4));
+
+
+        List<Monster> monstersToPolana = new ArrayList<Monster>();
+        monstersToPolana.add(monsters.get(5));
+        monstersToPolana.add(monsters.get(6));
+        monstersToPolana.add(monsters.get(7));
+        monstersToPolana.add(monsters.get(8));
+        monstersToPolana.add(monsters.get(9));
+
     }
 }
