@@ -161,15 +161,17 @@ public class Main {
             for (int i = 0; i < locations.size(); i++) {
                 System.out.println("[" + (i + 1) + "] " + locations.get(i).getName());
             }
-            System.out.println("[3] Cofnij");
+            System.out.println("[3] Powrót");
 
             System.out.print("Wybierz mapę: ");
             int choice = scanner.nextInt();
             System.out.println();
 
             if (choice == 1 && location1.entryToLocation(character)) {
+                onTheMap(character);
                 return;
             } else if (choice == 2 && location2.entryToLocation(character)) {
+                onTheMap(character);
                 return;
             } else if (choice == 3) {
                 chooseAction(character);
@@ -177,6 +179,7 @@ public class Main {
         }
     }
 
+    // Ustawiamy jakie potwory mają występować na danej mapie
     private static void addMonstersToLocation(List<Monster>monsters) {
         List<Monster> monstersToZapadlisko = new ArrayList<Monster>();
         monstersToZapadlisko.add(monsters.get(0));
@@ -193,5 +196,25 @@ public class Main {
         monstersToPolana.add(monsters.get(8));
         monstersToPolana.add(monsters.get(9));
 
+    }
+
+    // Wybieranie akcji będąc już na mapie (atakuj, cofnij)
+    private static void onTheMap(Character character) {
+        while (true) {
+            System.out.println("[1] Zaatakuj przeciwnika");
+            System.out.println("[2] Powrót");
+
+            System.out.print("Wybierz działanie: ");
+            int choice = scanner.nextInt();
+            System.out.println();
+
+            switch (choice) {
+                case 1:
+                    return;
+                case 2:
+                    chooseMap(character);
+            }
+
+        }
     }
 }

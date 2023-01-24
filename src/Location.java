@@ -14,13 +14,13 @@ public class Location {
     public boolean entryToLocation(Character character) {
         if (character.getLevel() < getMinLevel()) {
             System.out.println();
-            System.out.println("Masz za niski poziom, aby wejśc do tej lokacji!");
+            System.out.println("Masz za niski poziom, aby wejść do tej lokacji!");
             System.out.println();
             return false;
         }
         else {
             System.out.println();
-            System.out.println("Udało Ci się wejść na mapę " + getName());
+            System.out.println("Aktualna mapa: " + getName());
             System.out.println();
             return true;
         }
